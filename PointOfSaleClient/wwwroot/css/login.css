@@ -1,0 +1,33 @@
+.keypadContainer {
+    margin: auto;
+    display: inline-block;
+}
+
+.keypadContainer input {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 24pt;
+    border: 0px solid transparent;
+}
+
+.keypad {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2.5px;
+    padding: 2.5px;
+}
+
+.keypad button {
+    border-radius: 5px;
+    width: 75px;
+    height: 75px;
+    border-width: 1px;
+    font-size: 20pt;
+}
+
+.keypad button:hover {
+    background-color: aliceblue;
+}

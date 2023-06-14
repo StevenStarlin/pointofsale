@@ -1,0 +1,53 @@
+@startuml
+allowmixing
+!include  <C4/C4_Context.puml>
+!include <office/Users/user.puml>
+
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+!include osaPuml/Common.puml
+!include osaPuml/User/all.puml
+!include osaPuml/Hardware/all.puml
+!include osaPuml/Misc/all.puml
+!include osaPuml/Server/all.puml
+!include osaPuml/Site/all.puml
+
+title Point of Sale System Diagram
+
+Person(User, "Employee", "Staff")
+
+System_Boundary(ThisSystem, "Relevant System") {
+    System_Boundary(Client, "Clientside") {
+        System(Terminal, "POS Terminal", "User interaction point")
+        System(Consumer, "API Consumer", "NuGet Package for\nhandling API calls")
+    }
+
+    together {
+        json RequestPacket {
+            "Create": "Create Endpoint",
+            "Read": "Get Endpoints",
+            "Update": "Update Endpoint",
+            "Delete": "Deactivate Endpoint"
+        }
+    }
+
+    System_Boundary(Server, "Serverside") {
+        System(DB, "MSSQL DB", "Database")
+        System(API, "API Service", "API for indirect\ndatabase interaction")
+    }
+}
+
+System_Boundary(Externals, "External Systems") {
+    System(Printing, "Printing Service", "Print Receipts,\nreports,\nand more")
+    System(Reports, "Reporting Service", "Visual reports like\nTelerik, Chart Helper, or other")
+}
+
+User <--> Terminal
+Consumer <---> RequestPacket
+RequestPacket <--> API
+DB <--> API
+Terminal <--> Consumer
+
+User <--> Reports
+Terminal --> Printing
+
+@enduml

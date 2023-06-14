@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Server=localhost;Database=PointOfSale;Trusted_Connection=True;TrustServerCertificate=True;User ID={replace_with_server_username};Password={replace_with_server_password}" Microsoft.EntityFrameworkCore.SqlServer --project PointOfSale_Entities -o Models

@@ -24,8 +24,3 @@ This point of sale serves as a demonstration snapshot of my current coding and a
     * Local area for now
 * How to run tests
 * Deployment instructions
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
